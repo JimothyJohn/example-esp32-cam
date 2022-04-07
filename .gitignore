@@ -53,3 +53,12 @@ dkms.conf
 
 .DS_Store
 
+
+# My Stuff
+.vscode/
+Documentation/
+ei-library/
+Examples/
+.pio/
+.pytest*/
+__pycache__/

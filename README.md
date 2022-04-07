@@ -1,59 +1,50 @@
-# ESP-EYE and Edge Impulse
+# ESP-EYE width Edge Impulse
 
-How to run custom inference on a ESP-EYE using Edge Impulse. 
+How to run custom inference on a ESP-EYE using Edge Impulse.
 
-### Material
+### Hardware
 
-![esp32-cam](docs/esp-eye.jpg)
+This code has only been tested on the ESP-EYE module.
 
-This code has been tested on the ESP-EYE module. It should work the same with the Wrover board or an board that has PSRAM. 
+![esp-eye](docs/esp-eye.jpg)
 
-To use this board, please select your board in the Arduino code the following lines:
+### Software
 
-```
-// Select camera model
-
-//#define CAMERA_MODEL_WROVER_KIT // Has PSRAM
-#define CAMERA_MODEL_ESP_EYE // Has PSRAM
-//#define CAMERA_MODEL_M5STACK_PSRAM // Has PSRAM
-//#define CAMERA_MODEL_M5STACK_V2_PSRAM // M5Camera version B Has PSRAM
-//#define CAMERA_MODEL_M5STACK_WIDE // Has PSRAM
-//#define CAMERA_MODEL_M5STACK_ESP32CAM // No PSRAM
-//#define CAMERA_MODEL_AI_THINKER // Has PSRAM
-//#define CAMERA_MODEL_TTGO_T_JOURNAL // No PSRAM
-```
-
-## Steps
+* [PlatformIO](docs/PLATFORMIO.md)
 
 * Create your Image Classification model using [Edge Impulse](https://edgeimpulse.com).
 
 * Due to the board limitations you will need to train your model with 96x96 images and use the MobileNetV1 0.01:*
 
-![create-impulse](docs/create-impulse.png)
+    ![create-impulse](docs/create-impulse.png)
 
 * Download the Arduino library under the `Deployment` tab in the Edge Impulse studio
 
-![dl-arduino-lib](docs/deployment-tab.png)
+    ![dl-arduino-lib](docs/deployment-tab.png)
 
 ### Image Classification Example
 
-* Save the .zip library you have downloaded to [lib/](lib/)
-* Add library location to [platformio.ini](platformio.ini)
+* Save the .zip library you have downloaded to [lib/](lib/) or use the default sample car library
 
-```ini
-lib_deps = lib/<your-project>.zip
-```
+    * Add library location to [platformio.ini](platformio.ini) if needed
+
+        ```ini
+        lib_deps = lib/<your-project>.zip
+        ```
 
 * Compile and deploy the code to your board
 
-```bash
-pio run -t upload
-```
+    ```bash
+    pio run -t upload
+    ```
 
 * Open the serial monitor and use the provided IP to capture an image and run the inference:
 
-![serial-monitor](docs/open-serial.png)
-![inference](docs/inference.png)
+    ```bash
+    pio device monitor
+    ```
+
+    ![serial-output](docs/open-serial.png)
 
 ## Resources
 

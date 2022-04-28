@@ -62,3 +62,4 @@ Examples/
 .pio/
 .pytest*/
 __pycache__/
+*.zip

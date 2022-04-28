@@ -12,7 +12,7 @@ This code has only been tested on the ESP-EYE module.
 
 * [PlatformIO](docs/PLATFORMIO.md)
 
-* Create your Image Classification model using [Edge Impulse](https://edgeimpulse.com).
+* Create your model using [Edge Impulse](https://edgeimpulse.com).
 
 * Due to the board limitations you will need to train your model with 96x96 images and use the MobileNetV1 0.01:*
 
@@ -24,7 +24,7 @@ This code has only been tested on the ESP-EYE module.
 
 ### Image Classification Example
 
-* Save the .zip library you have downloaded to [lib/](lib/) or use the default sample car library
+* Save the .zip library you have downloaded to [lib/](lib/)
 
     * Add library location to [platformio.ini](platformio.ini) if needed
 
@@ -35,19 +35,17 @@ This code has only been tested on the ESP-EYE module.
 * Compile and deploy the code to your board
 
     ```bash
-    pio run -t upload
+    pio run -t upload && pio device monitor
     ```
-
-* Open the serial monitor and use the provided IP to capture an image and run the inference:
-
-    ```bash
-    pio device monitor
-    ```
-
-    ![serial-output](docs/open-serial.png)
 
 ## Resources
 
 - [TinyML ESP32-CAM: Edge Image classification with Edge Impulse](https://www.survivingwithandroid.com/tinyml-esp32-cam-edge-image-classification-with-edge-impulse/) 
 - [https://github.com/v12345vtm/esp32-cam-webserver-arduino-simplified-arduino-html](https://github.com/v12345vtm/esp32-cam-webserver-arduino-simplified-arduino-html)
 - [ESP32-CAM](https://github.com/edgeimpulse/example-esp32-cam)
+
+## To-do (test-driven)
+
+* Establish separate endpoints for image, predictions, and metrics
+* Convert to async webserver
+* Add telemetry for location via 6-axis transformations

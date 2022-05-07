@@ -56,10 +56,7 @@ dkms.conf
 
 # My Stuff
 .vscode/
-Documentation/
-ei-library/
-Examples/
 .pio/
 .pytest*/
 __pycache__/
-*.zip
+.env
